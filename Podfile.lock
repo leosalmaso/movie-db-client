@@ -1,24 +1,29 @@
 PODS:
   - Alamofire (4.8.2)
+  - AlamofireImage (3.5.2):
+    - Alamofire (~> 4.8)
   - MXSegmentedControl (1.0.0)
   - PureLayout (3.1.4)
 
 DEPENDENCIES:
   - Alamofire
+  - AlamofireImage (~> 3.5)
   - MXSegmentedControl
   - PureLayout
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - AlamofireImage
     - MXSegmentedControl
     - PureLayout
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   MXSegmentedControl: 41e747fc7576b075a8f5d811223478207cbebb77
   PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
 
-PODFILE CHECKSUM: b0a8a81677ea23454ff0893b128740e655f5e58c
+PODFILE CHECKSUM: c675b07fe1adcbf067e8e7ed2afa392e2f84a29e
 
 COCOAPODS: 1.5.3

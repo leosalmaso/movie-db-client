@@ -24,6 +24,14 @@ struct Movie: Codable {
     let adult: Bool?
     let overview: String?
     let releaseDate: String?
+    
+    func imagePath() -> String? {
+        guard let path = posterPath else {
+            return nil
+        }
+        
+        return "https://image.tmdb.org/t/p/w400" + path
+    }
 }
 
 extension Movie {

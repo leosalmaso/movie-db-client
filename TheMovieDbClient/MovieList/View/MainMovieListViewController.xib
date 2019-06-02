@@ -23,10 +23,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="FUy-li-Gyd">
-                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7nq-uW-FsF">
-                        <size key="itemSize" width="50" height="50"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sem-2a-687">
+                        <size key="itemSize" width="0.0" height="0.0"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -43,20 +43,11 @@
                         <constraint firstAttribute="height" constant="40" id="Zk2-qf-4VP"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="defaultTextColor">
-                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
                             <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="containerBackgroundColor">
-                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="thumbColor">
-                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                            <color key="value" red="0.27058823529999998" green="0.61176470589999998" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="value" red="0.23137254901960785" green="0.48627450980392156" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="0.0"/>
@@ -64,10 +55,10 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.33333826065063477" green="0.33332449197769165" blue="0.33333384990692139" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="FUy-li-Gyd" secondAttribute="bottom" id="G95-z2-RUy"/>
-                <constraint firstItem="FUy-li-Gyd" firstAttribute="top" secondItem="tOn-Qa-F79" secondAttribute="bottom" id="IcT-Au-RhR"/>
+                <constraint firstItem="FUy-li-Gyd" firstAttribute="top" secondItem="tOn-Qa-F79" secondAttribute="bottom" constant="10" id="IcT-Au-RhR"/>
                 <constraint firstItem="FUy-li-Gyd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Iqm-Ad-VI1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tOn-Qa-F79" secondAttribute="trailing" id="Lil-qU-oVr"/>
                 <constraint firstItem="tOn-Qa-F79" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UHU-V1-5Pa"/>
