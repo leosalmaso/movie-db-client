@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let mainVC = MainMovieListViewController(nibName:"MainMovieListViewController", bundle:nil)
+//        let mainVC = MainMovieListViewController(nibName:"MainMovieListViewController", bundle:nil)
+        let mainVC = MovieDetailViewController(nibName:"MovieDetailViewController", bundle:nil)
         window?.rootViewController = mainVC
         window?.makeKeyAndVisible()
         return true

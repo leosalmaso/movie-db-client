@@ -11,6 +11,7 @@ import UIKit
 private enum MockFile: String {
     case topMovies = "top_response"
     case singleMovie = "movie_object"
+    case movieVideos = "trailers_object"
 }
 
 class MockHelper {
@@ -53,6 +54,22 @@ class MockHelper {
             let movie = try decoder.decode(Movie.self, from: jsonData)
             
             return movie
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    
+    func sampleMovieTrailers() -> Trailers? {
+        guard let topUrl = urlForMock(mockFile: .movieVideos) else {
+            return nil
+        }
+        
+        do {
+            let jsonData = try Data(contentsOf: topUrl)
+            let trailers = try decoder.decode(Trailers.self, from: jsonData)
+            
+            return trailers
         } catch {
             print(error)
             return nil

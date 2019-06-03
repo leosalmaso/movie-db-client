@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct Movie: Codable {
     let voteCount: Int?
     let id: Int
@@ -24,6 +23,7 @@ struct Movie: Codable {
     let adult: Bool?
     let overview: String?
     let releaseDate: String?
+    let videos: PaginatedResponse<Video>
     
     func imagePath() -> String? {
         guard let path = posterPath else {
@@ -50,5 +50,6 @@ extension Movie {
         case adult
         case overview
         case releaseDate = "release_date"
+        case videos
     }
 }

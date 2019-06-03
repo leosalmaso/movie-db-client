@@ -54,6 +54,12 @@ extension MainMovieListViewController: UICollectionViewDataSource {
         cell.fillCell(withMovie: items![indexPath.row])
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let movie = items?[indexPath.row] {
+            
+        }
+    }
 }
 
 extension MainMovieListViewController: UICollectionViewDelegateFlowLayout {
