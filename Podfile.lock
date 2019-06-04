@@ -4,12 +4,14 @@ PODS:
     - Alamofire (~> 4.8)
   - MXSegmentedControl (1.0.0)
   - PureLayout (3.1.4)
+  - YoutubeDirectLinkExtractor (0.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage (~> 3.5)
   - MXSegmentedControl
   - PureLayout
+  - YoutubeDirectLinkExtractor
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -17,13 +19,15 @@ SPEC REPOS:
     - AlamofireImage
     - MXSegmentedControl
     - PureLayout
+    - YoutubeDirectLinkExtractor
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   MXSegmentedControl: 41e747fc7576b075a8f5d811223478207cbebb77
   PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
+  YoutubeDirectLinkExtractor: 068b6a09d64551cb7cec966179d7f5f5824cd2db
 
-PODFILE CHECKSUM: c675b07fe1adcbf067e8e7ed2afa392e2f84a29e
+PODFILE CHECKSUM: 2aa79566ef6b6ebe52d719f8d4a8320534ad4760
 
 COCOAPODS: 1.5.3

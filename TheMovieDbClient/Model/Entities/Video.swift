@@ -12,19 +12,21 @@ enum VideoType: String, Codable {
     case Teaser
     case Featurette
     case Trailer
+    case Clip
 }
 
 struct Video: Codable {
+    let id: String
     let name: String
-    let size: String
-    let source: String
+    let size: Int
+    let key: String
     let type: VideoType
     
     func videoUrl() -> URL? {
-        return URL(string: "https://www.youtube.com/watch?v=" + source)
+        return URL(string: "https://www.youtube.com/watch?v=" + key)
     }
     
     func videoPlaceholderUrl() -> URL? {
-        return URL(string: "https://img.youtube.com/vi/\(source)/hqdefault.jpg")
+        return URL(string: "https://img.youtube.com/vi/\(key)/hqdefault.jpg")
     }
 }

@@ -9,6 +9,7 @@ target 'TheMovieDbClient' do
   pod 'AlamofireImage', '~> 3.5'
   pod 'PureLayout'
   pod 'MXSegmentedControl'
+  pod 'YoutubeDirectLinkExtractor'
 
   target 'TheMovieDbClientTests' do
     inherit! :search_paths

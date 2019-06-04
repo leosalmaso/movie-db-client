@@ -9,10 +9,10 @@
 import UIKit
 
 class HeaderCollectionViewCell: UICollectionViewCell {
-
     
     @IBOutlet weak var previewVideoImage: UIImageView!
     @IBOutlet weak var playImage: UIImageView!
+    @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,4 +23,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         previewVideoImage.af_setImage(withURL: video.videoPlaceholderUrl()!)
     }
     
+    func loadingVideo(isLoading: Bool) {
+        isLoading ? loadingActivityIndicator.startAnimating() : loadingActivityIndicator.stopAnimating()
+    }
 }

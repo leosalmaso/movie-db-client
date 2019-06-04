@@ -9,6 +9,11 @@
 import Foundation
 
 struct Trailers: Codable {
-    let id: String
-    let youtube: [Video]
+    let videos: [Video]
+}
+
+extension Trailers {
+    enum CodingKeys: String, CodingKey {
+        case videos = "results"
+    }
 }

@@ -11,7 +11,7 @@ import UIKit
 private enum MockFile: String {
     case topMovies = "top_response"
     case singleMovie = "movie_object"
-    case movieVideos = "trailers_object"
+    case movieVideos = "trailers_responser"
 }
 
 class MockHelper {

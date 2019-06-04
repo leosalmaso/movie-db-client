@@ -18,10 +18,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    static var placeholderImage: UIImage? = {
-        return UIImage(named: "placeholder")
-    }()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,7 +28,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         titleLabel.text = movie.title
         
         if let imagePath = movie.imagePath(), let imageUrl = URL(string: imagePath) {
-            movieImageView.af_setImage(withURL: imageUrl, placeholderImage: MovieCollectionViewCell.placeholderImage)
+            movieImageView.af_setImage(withURL: imageUrl)
         }
         
         if let stringReleaseDate = movie.releaseDate, let releaseDate = DateHelper.sharedInstance.dateFromString(stringReleaseDate) {
