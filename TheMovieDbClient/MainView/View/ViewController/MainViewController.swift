@@ -27,10 +27,6 @@ extension MainViewController: MainViewProtocol {
         tabBarController?.selectedIndex = tabIndex
     }
     
-    func showMessage(_ message: String) {
-        //TO DO
-    }
-    
     func addViewController(_ viewController: UIViewController, toTabPosition position: Int) {
         
         if let navigationController = viewControllers?[position] as? UINavigationController {

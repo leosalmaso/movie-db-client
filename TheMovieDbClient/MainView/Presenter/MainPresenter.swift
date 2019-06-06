@@ -8,14 +8,8 @@
 
 import UIKit
 
-enum MainTabs: Int {
-    case Movies = 0
-    case Series = 1
-}
-
 protocol MainViewProtocol: class {
     func changeToTab(_ tabIndex: Int)
-    func showMessage(_ message: String)
     func addViewController(_ viewController: UIViewController, toTabPosition position: Int)
 }
 

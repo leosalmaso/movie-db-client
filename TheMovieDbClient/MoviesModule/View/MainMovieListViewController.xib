@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainMovieListViewController" customModule="TheMovieDbClient" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="8hp-2p-peF" id="ilN-hd-4FH"/>
                 <outlet property="categorySelector" destination="tOn-Qa-F79" id="hRK-d2-EOq"/>
                 <outlet property="movieCollectionView" destination="FUy-li-Gyd" id="buf-8M-ygM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -54,6 +55,10 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8hp-2p-peF">
+                    <rect key="frame" x="169" y="315" width="37" height="37"/>
+                    <color key="color" red="0.99215686270000003" green="0.86274509799999999" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="0.33333826065063477" green="0.33332449197769165" blue="0.33333384990692139" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
@@ -62,6 +67,8 @@
                 <constraint firstItem="FUy-li-Gyd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Iqm-Ad-VI1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tOn-Qa-F79" secondAttribute="trailing" id="Lil-qU-oVr"/>
                 <constraint firstItem="tOn-Qa-F79" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UHU-V1-5Pa"/>
+                <constraint firstItem="8hp-2p-peF" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Vw7-8k-vEX"/>
+                <constraint firstItem="8hp-2p-peF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="W2n-YK-eVI"/>
                 <constraint firstItem="tOn-Qa-F79" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pEY-PZ-dCp"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FUy-li-Gyd" secondAttribute="trailing" id="z1j-zb-6G8"/>
             </constraints>

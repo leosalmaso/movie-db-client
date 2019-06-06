@@ -9,10 +9,10 @@
 import Foundation
 import AVKit
 import YoutubeDirectLinkExtractor
+import TTGSnackbar
 
 extension UIViewController {
     func playVideo(videoURL: URL, completionHandler: @escaping () -> Void) {
-        
         let y = YoutubeDirectLinkExtractor()
         y.extractInfo(for: .urlString(videoURL.absoluteString), success: { [weak self] info in
             guard let self = self, let loLink = info.lowestQualityPlayableLink, let loUrl = URL(string:loLink) else { return }
@@ -29,5 +29,19 @@ extension UIViewController {
             completionHandler()
             print(error)
         }
+    }
+    
+    func showErrorMessage(_ message: String) {
+        showMessage(message, backgroundColor: .red, duration: .middle)
+    }
+    
+    func showMessage(_ message: String) {
+        showMessage(message, backgroundColor: .yellow, duration: .middle)
+    }
+    
+    private func showMessage(_ message: String, backgroundColor: UIColor, duration: TTGSnackbarDuration) {
+        let snackbar = TTGSnackbar(message: message, duration: duration)
+        snackbar.backgroundColor = backgroundColor
+        snackbar.show()
     }
 }

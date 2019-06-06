@@ -23,6 +23,13 @@ class MovieCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
+    override func prepareForReuse() {
+        titleLabel.text = ""
+        movieImageView.image = UIImage(named: "placeholder")
+        releaseDateLabel.text = ""
+        scoreLabel.text = ""
+    }
+    
     func fillCell(withMovie movie: Movie) {
         
         titleLabel.text = movie.title

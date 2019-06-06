@@ -10,6 +10,7 @@ target 'TheMovieDbClient' do
   pod 'PureLayout'
   pod 'MXSegmentedControl'
   pod 'YoutubeDirectLinkExtractor'
+  pod "TTGSnackbar"
 
   target 'TheMovieDbClientTests' do
     inherit! :search_paths
