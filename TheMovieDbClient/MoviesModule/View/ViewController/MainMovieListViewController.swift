@@ -42,6 +42,17 @@ class MainMovieListViewController: UIViewController {
     
     var movieSource: MovieSource?
     
+    //Inits
+    init(movieSource: MovieSource) {
+        super.init(nibName: "MainMovieListViewController", bundle: nil)
+        presenter.defineMovieSource(movieSource)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    
     //Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,12 +70,12 @@ class MainMovieListViewController: UIViewController {
     }
     
     func itemsForSelectedCategory() -> [Movie]? {
-        let selectedCategory = MovieCategory.allCases[categorySelector.selectedIndex]
+        let selectedCategory = presenter.categoryForIndex(categorySelector.selectedIndex)
         return itemsByCategory[selectedCategory.rawValue]
     }
     
     @objc func changeIndex(segmentedControl: MXSegmentedControl) {
-        presenter.didChangeSelectedCategory(MovieCategory.allCases[segmentedControl.selectedIndex])
+        presenter.didChangeSelectedCategory(toIndexCategory: segmentedControl.selectedIndex)
     }
 }
 

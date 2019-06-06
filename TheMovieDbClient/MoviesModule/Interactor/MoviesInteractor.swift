@@ -24,8 +24,8 @@ class MoviesInteractor: PresenterToInteractorProtocol {
         self.presenter = presenter
     }
     
-    func fetchMovies(forCategory category: MovieCategory, page: Int) {
-        restClient.fetch(movieType: .movie, forCategory: category.encodeToParam(), inPage: page) { [weak self] response in
+    func fetchMoviesForCategory(_ category: MovieCategory, forSource source: MovieSource, inPage page: Int) {
+        restClient.fetch(movieType: source.encodeToParam(), forCategory: category.encodeToParam(), inPage: page) { [weak self] response in
             guard let self = self else { return }
             
             if let response = response {

@@ -24,6 +24,20 @@ enum MovieCategory: String, CaseIterable {
     case popular = "Popular"
     case topRated = "Top Rated"
     case upcoming = "Upcoming"
+    case onTheAir = "On the Air"
+    
+    static func allCasesForSource(_ source: MovieSource) -> [MovieCategory]{
+        switch source {
+        case .movie:
+            return [.popular, .topRated, .upcoming]
+        case .tv:
+            return [.popular, .topRated, .onTheAir]
+        }
+    }
+    
+    static func defaultValue() -> MovieCategory{
+        return .popular
+    }
     
     func encodeToParam() -> String {
         switch self {
@@ -33,6 +47,8 @@ enum MovieCategory: String, CaseIterable {
             return "top_rated"
         case .upcoming:
             return "upcoming"
+        case .onTheAir:
+            return "on_the_air"
         }
     }
 }

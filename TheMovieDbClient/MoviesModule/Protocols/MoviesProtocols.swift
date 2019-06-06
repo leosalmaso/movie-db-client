@@ -16,7 +16,9 @@ protocol PresenterToRouterProtocol: class {
 protocol ViewToPresenterProtocol: class{
     func initView()
     func fetchMovies(forCategory category: MovieCategory)
-    func didChangeSelectedCategory(_ category: MovieCategory)
+    func didChangeSelectedCategory(toIndexCategory index: Int)
+    func defineMovieSource(_ movieSource: MovieSource)
+    func categoryForIndex(_ index: Int) -> MovieCategory 
 }
 
 protocol PresenterToViewProtocol: class{
@@ -28,7 +30,7 @@ protocol PresenterToViewProtocol: class{
 }
 
 protocol PresenterToInteractorProtocol: class {
-    func fetchMovies(forCategory category: MovieCategory,page: Int)
+    func fetchMoviesForCategory(_ category: MovieCategory, forSource source: MovieSource, inPage page: Int)
 }
 
 protocol InteractorToPresenterProtocol: class {

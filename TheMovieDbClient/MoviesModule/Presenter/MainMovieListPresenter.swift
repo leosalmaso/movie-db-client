@@ -11,8 +11,10 @@ import UIKit
 class MainMovieListPresenter {
     
     //Define the first tab as default category
-    private let defaultCategory = MovieCategory.allCases.first!
+    private let defaultCategory = MovieCategory.defaultValue()
     
+    //Set movie as default value
+    private var movieSource: MovieSource = .movie
     private var categoryPageNumber: [MovieCategory : Int]
     private weak var view: PresenterToViewProtocol?
     
@@ -38,17 +40,26 @@ class MainMovieListPresenter {
 extension MainMovieListPresenter: ViewToPresenterProtocol {
     
     func initView() {
-        view?.updateCategories(MovieCategory.allCases.map({ category in return category.rawValue }))
+        view?.updateCategories(MovieCategory.allCasesForSource(movieSource).map({ category in return category.rawValue }))
         fetchMovies(forCategory: defaultCategory)
     }
     
     func fetchMovies(forCategory category: MovieCategory) {
         view?.isLoading(true)
-        interactor.fetchMovies(forCategory: category, page: page(forCategory: category))
+        interactor.fetchMoviesForCategory(category, forSource: movieSource, inPage: page(forCategory: category))
     }
     
-    func didChangeSelectedCategory(_ category: MovieCategory) {
+    func didChangeSelectedCategory(toIndexCategory index: Int) {
+        let category = categoryForIndex(index)
         fetchMovies(forCategory: category)
+    }
+    
+    func defineMovieSource(_ movieSource: MovieSource) {
+        self.movieSource = movieSource
+    }
+    
+    func categoryForIndex(_ index: Int) -> MovieCategory {
+        return MovieCategory.allCasesForSource(movieSource)[index]
     }
 }
 

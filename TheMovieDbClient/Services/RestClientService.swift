@@ -15,8 +15,8 @@ class RestClientService: IRestClientService {
     private let baseUrl = "https://api.themoviedb.org/3/"
     private let apiKey = "ac38b6fbf191c9aaf5c4c8235f31066d"
     
-    func fetch(movieType type: Resource, forCategory category: String, inPage page: Int, completion: @escaping (Data?) -> Void) {
-        let path = "\(type.rawValue)/\(category)"
+    func fetch(movieType type: String, forCategory category: String, inPage page: Int, completion: @escaping (Data?) -> Void) {
+        let path = "\(type)/\(category)"
         fetch(from: path, withParams: nil) { response in
             
             guard let response = response else {
