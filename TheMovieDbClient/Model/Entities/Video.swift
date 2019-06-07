@@ -15,6 +15,7 @@ enum VideoType: String, Codable {
     case Clip
 }
 
+
 struct Video: Codable {
     let id: String
     let name: String

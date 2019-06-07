@@ -32,20 +32,19 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     func fillCell(withMovie movie: Movie) {
         
-        titleLabel.text = movie.title
+        titleLabel.text = movie.title ?? movie.name
+        scoreLabel.text = String(movie.voteAverage)
         
         if let imagePath = movie.imagePath(), let imageUrl = URL(string: imagePath) {
             movieImageView.af_setImage(withURL: imageUrl)
         }
         
-        if let stringReleaseDate = movie.releaseDate, let releaseDate = DateHelper.sharedInstance.dateFromString(stringReleaseDate) {
+        let dateToShow = movie.releaseDate ?? movie.firsAirDate
+        
+        if let stringReleaseDate = dateToShow, let releaseDate = DateHelper.sharedInstance.dateFromString(stringReleaseDate) {
             releaseDateLabel.text = String(DateHelper.sharedInstance.componentFromDate(releaseDate, component: .year))
         } else {
             releaseDateLabel.text = NSLocalizedString("UNKNOWN", comment: "Unknown information")
-        }
-        
-        if let voteAverage = movie.voteAverage {
-            scoreLabel.text = String(voteAverage)
         }
     }
 }

@@ -39,10 +39,7 @@ class MovieDetailViewController: UIViewController {
             releaseDateLabel.text = String(DateHelper.sharedInstance.componentFromDate(releaseDate, component: .year))
         }
         
-        if let voteAverage = movie.voteAverage {
-            scoreLabel.text = String(voteAverage)
-        }
-        
+        scoreLabel.text = String(movie.voteAverage)
         overviewLabel.text = movie.overview
     }
 }

@@ -11,6 +11,8 @@
 		4CE821BAA0D09FB16043E5A0 /* Pods_TheMovieDbClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4112FC097D041CD26C2DEA6 /* Pods_TheMovieDbClient.framework */; };
 		7C73A01C22A38C2C00D7A727 /* UIViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73A01B22A38C2C00D7A727 /* UIViewHelper.swift */; };
 		7C73A02022A4475900D7A727 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73A01F22A4475900D7A727 /* DateHelper.swift */; };
+		7CA10F9322A9C6740081A71B /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA10F9222A9C6740081A71B /* Movie+CoreDataProperties.swift */; };
+		7CA10F9522A9C7E60081A71B /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA10F9422A9C7E60081A71B /* CoreDataHelper.swift */; };
 		7CAAE7B322A468C2009DEBB4 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAAE7B122A468C2009DEBB4 /* MovieDetailViewController.swift */; };
 		7CAAE7B422A468C2009DEBB4 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CAAE7B222A468C2009DEBB4 /* MovieDetailViewController.xib */; };
 		7CAAE7B822A4704B009DEBB4 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAAE7B722A4704B009DEBB4 /* Video.swift */; };
@@ -75,6 +77,8 @@
 		7B0080BB328FD688D944CE0A /* Pods-TheMovieDbClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDbClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovieDbClient/Pods-TheMovieDbClient.debug.xcconfig"; sourceTree = "<group>"; };
 		7C73A01B22A38C2C00D7A727 /* UIViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewHelper.swift; sourceTree = "<group>"; };
 		7C73A01F22A4475900D7A727 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		7CA10F9222A9C6740081A71B /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7CA10F9422A9C7E60081A71B /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		7CAAE7B122A468C2009DEBB4 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		7CAAE7B222A468C2009DEBB4 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
 		7CAAE7B722A4704B009DEBB4 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 				F8299200229EC8AD00B47DCF /* MockHelper.swift */,
 				7C73A01B22A38C2C00D7A727 /* UIViewHelper.swift */,
 				F850358622A597D500EC2AFA /* UIViewControllerHelper.swift */,
+				7CA10F9422A9C7E60081A71B /* CoreDataHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 		F87F1075229C6204004FD05A /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				7CA10F9222A9C6740081A71B /* Movie+CoreDataProperties.swift */,
 				F8571FE52290C4C1006A314B /* TheMovieDbClient.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -598,11 +604,13 @@
 				F87EDCB622A70BCC008CF9BF /* MoviesRouter.swift in Sources */,
 				7C73A01C22A38C2C00D7A727 /* UIViewHelper.swift in Sources */,
 				F8571FE72290C4C1006A314B /* TheMovieDbClient.xcdatamodeld in Sources */,
+				7CA10F9322A9C6740081A71B /* Movie+CoreDataProperties.swift in Sources */,
 				F85720032290C59E006A314B /* IRestClientService.swift in Sources */,
 				F87EDCB122A707F5008CF9BF /* MainViewController.swift in Sources */,
 				7CAAE7B322A468C2009DEBB4 /* MovieDetailViewController.swift in Sources */,
 				7CAAE7B822A4704B009DEBB4 /* Video.swift in Sources */,
 				F87F1066229C60AB004FD05A /* MainMovieListViewController.swift in Sources */,
+				7CA10F9522A9C7E60081A71B /* CoreDataHelper.swift in Sources */,
 				F87EDCB322A70830008CF9BF /* MainPresenter.swift in Sources */,
 				F87EDCBB22A81738008CF9BF /* Enums.swift in Sources */,
 				F8571FDF2290C4C1006A314B /* AppDelegate.swift in Sources */,
