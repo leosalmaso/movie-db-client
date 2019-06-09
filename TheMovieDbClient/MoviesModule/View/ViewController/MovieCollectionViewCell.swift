@@ -41,7 +41,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         
         let dateToShow = movie.releaseDate ?? movie.firsAirDate
         
-        if let stringReleaseDate = dateToShow, let releaseDate = DateHelper.sharedInstance.dateFromString(stringReleaseDate) {
+        if let releaseDate = dateToShow {
             releaseDateLabel.text = String(DateHelper.sharedInstance.componentFromDate(releaseDate, component: .year))
         } else {
             releaseDateLabel.text = NSLocalizedString("UNKNOWN", comment: "Unknown information")

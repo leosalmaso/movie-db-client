@@ -35,5 +35,6 @@ protocol PresenterToInteractorProtocol: class {
 
 protocol InteractorToPresenterProtocol: class {
     func moviesFetchedSuccess(moviesModelArray movies: [Movie], forCategory category: MovieCategory)
+    func moviesFetchedSuccessOffline(moviesModelArray movies: [Movie], forCategory category: MovieCategory)
     func moviesFetchFailed()
 }

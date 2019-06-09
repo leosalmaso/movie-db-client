@@ -36,12 +36,15 @@ extension UIViewController {
     }
     
     func showMessage(_ message: String) {
-        showMessage(message, backgroundColor: .yellow, duration: .middle)
+        showMessage(message, backgroundColor: UIColor(hex: "E9C545"), textColor: .black , duration: .long)
     }
     
-    private func showMessage(_ message: String, backgroundColor: UIColor, duration: TTGSnackbarDuration) {
+    private func showMessage(_ message: String, backgroundColor: UIColor, textColor: UIColor = .white, duration: TTGSnackbarDuration) {
         let snackbar = TTGSnackbar(message: message, duration: duration)
         snackbar.backgroundColor = backgroundColor
+        snackbar.actionTextColor = textColor    
+        snackbar.bottomMargin = 56
         snackbar.show()
     }
 }
+    

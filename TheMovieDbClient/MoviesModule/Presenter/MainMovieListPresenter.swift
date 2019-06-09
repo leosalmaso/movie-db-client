@@ -35,6 +35,11 @@ class MainMovieListPresenter {
             return 0
         }
     }
+    
+    private func moviesFetched(moviesModelArray movies: [Movie], forCategory category: MovieCategory) {
+        view?.isLoading(false)
+        view?.showMovies(movies, forCategory: category.rawValue)
+    }
 }
 
 extension MainMovieListPresenter: ViewToPresenterProtocol {
@@ -64,9 +69,14 @@ extension MainMovieListPresenter: ViewToPresenterProtocol {
 }
 
 extension MainMovieListPresenter: InteractorToPresenterProtocol {
-    func moviesFetchedSuccess(moviesModelArray movies: Array<Movie>, forCategory category: MovieCategory) {
-        view?.isLoading(false)
-        view?.showMovies(movies, forCategory: category.rawValue)
+    
+    func moviesFetchedSuccessOffline(moviesModelArray movies: [Movie], forCategory category: MovieCategory) {
+        moviesFetched(moviesModelArray: movies, forCategory: category)
+        view?.showMessage("Estas viendo contenido offline")
+    }
+    
+    func moviesFetchedSuccess(moviesModelArray movies: [Movie], forCategory category: MovieCategory) {
+        moviesFetched(moviesModelArray: movies, forCategory: category)
     }
     
     func moviesFetchFailed() {

@@ -52,3 +52,13 @@ enum MovieCategory: String, CaseIterable {
         }
     }
 }
+
+enum CodableParamKey: String, CodingKey, CaseIterable {
+    case params
+    case movieCategory
+    case movieSource
+    
+    func convertToCodingUserInfoKey() -> CodingUserInfoKey? {
+        return CodingUserInfoKey(rawValue: self.rawValue)
+    }
+}

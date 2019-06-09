@@ -19,6 +19,8 @@ class DateHelper {
         return DateFormatter()
     }()
     
+    private init() {}
+    
     func dateFromString(_ stringDate: String, withFormat format: String = DateHelper.defaultFormat) -> Date? {
         dateFormatter.dateFormat = format
         return dateFormatter.date(from: stringDate)

@@ -35,7 +35,7 @@ class MovieDetailViewController: UIViewController {
     func loadMovie(_ movie: Movie) {
         titleLabel.text = movie.title
         
-        if let stringReleaseDate = movie.releaseDate, let releaseDate = DateHelper.sharedInstance.dateFromString(stringReleaseDate) {
+        if let releaseDate = movie.releaseDate {
             releaseDateLabel.text = String(DateHelper.sharedInstance.componentFromDate(releaseDate, component: .year))
         }
         

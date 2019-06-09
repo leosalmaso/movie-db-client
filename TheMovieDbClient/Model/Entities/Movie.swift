@@ -11,38 +11,39 @@ import CoreData
 
 @objc(Movie)
 public class Movie: NSManagedObject, Codable {
-    @NSManaged public var id: Int
-    @NSManaged public var voteAverage: Double
-    @NSManaged public var title: String?
-    @NSManaged public var posterPath: String?
-    @NSManaged public var originalTitle: String?
-    @NSManaged public var name: String?
-    @NSManaged public var genreIds: [Int]?
-    @NSManaged public var overview: String?
-    @NSManaged public var releaseDate: String?
-    @NSManaged public var firsAirDate: String?
+    
     var media: Trailers?
     
     func imagePath() -> String? {
         guard let path = posterPath else {
             return nil
         }
-        
         return "https://image.tmdb.org/t/p/w400" + path
     }
     
     // MARK: - Decodable
     required convenience public init(from decoder: Decoder) throws {
-        guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext,
+        guard let codingUserInfoKeyManagedObjectContext = CoreDataHelper.managedObjectContext,
             let managedObjectContext = decoder.userInfo[codingUserInfoKeyManagedObjectContext] as? NSManagedObjectContext,
             let entity = NSEntityDescription.entity(forEntityName: "Movie", in: managedObjectContext) else {
                 fatalError("Failed to decode Movie")
         }
         
+        //Init Managed Object
         self.init(entity: entity, insertInto: managedObjectContext)
-        
+
+        //Decode Entity
+        try decodeEntity(from: decoder)
+    }
+}
+
+//Codable implementation
+extension Movie {
+    func decodeEntity(from decoder: Decoder) throws {
+        //Get Container
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
+        //Decode Properties
         id = try container.decodeIfPresent(Int.self, forKey: .id) ?? 0
         voteAverage = try container.decodeIfPresent(Double.self, forKey: .voteAverage) ?? 0
         title = try container.decodeIfPresent(String.self, forKey: .title)
@@ -51,11 +52,29 @@ public class Movie: NSManagedObject, Codable {
         name = try container.decodeIfPresent(String.self, forKey: .name)
         genreIds = try container.decodeIfPresent([Int].self, forKey: .genreIds)
         overview = try container.decodeIfPresent(String.self, forKey: .overview)
-        releaseDate = try container.decodeIfPresent(String.self, forKey: .releaseDate)
-        firsAirDate = try container.decodeIfPresent(String.self, forKey: .firsAirDate)
+        
+        let decodedReleaseDate = try container.decodeIfPresent(String.self, forKey: .releaseDate)
+        if let stringDate = decodedReleaseDate, let formattedDate = DateHelper.sharedInstance.dateFromString(stringDate) {
+            releaseDate = formattedDate
+        }
+        
+        let decodedFirstAirDate = try container.decodeIfPresent(String.self, forKey: .releaseDate)
+        if let stringDate = decodedFirstAirDate, let formattedDate = DateHelper.sharedInstance.dateFromString(stringDate) {
+            firsAirDate = formattedDate
+        }
+        
+        //Get extra params
+        if let extraParamsKey = CodableParamKey.params.convertToCodingUserInfoKey(),
+            let extraParams = decoder.userInfo[extraParamsKey] as? [CodableParamKey: String] {
+            category = extraParams[.movieCategory] ?? ""
+            source = extraParams[.movieSource] ?? ""
+        }
     }
-    
-    // MARK: - Encodable
+}
+
+
+//Encodable Protocol
+extension Movie {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
