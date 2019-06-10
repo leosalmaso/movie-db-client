@@ -9,6 +9,7 @@
 import CoreData
 
 class PersistenceService: IPersistenceService {
+    
     private lazy var decoder: JSONDecoder = {
         return JSONDecoder()
     }()
@@ -44,4 +45,19 @@ extension PersistenceService {
             return nil
         }
     }
+    
+    func fetchMovieById(_ id: Int, inSource source: String) -> Movie? {
+        let context = CoreDataHelper.sharedInstance.newContext()
+        let request = NSFetchRequest<Movie>(entityName: "Movie")
+        request.predicate = NSPredicate(format: "id = %d AND source = %@", id, source)
+        
+        do {
+            let movies = try context.fetch(request)
+            return movies.first
+        } catch {
+            print("Error Fetching Movie")
+            return nil
+        }
+    }
 }
+

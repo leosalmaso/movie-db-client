@@ -54,6 +54,11 @@ extension MainMovieListPresenter: ViewToPresenterProtocol {
         interactor.fetchMoviesForCategory(category, forSource: movieSource, inPage: page(forCategory: category))
     }
     
+    func didSelectMovie(_ movie: Movie) {
+        let detailVC = MoviesRouter.createMovieDetailViewController(movieId: movie.id, inSource: movie.source)
+        view?.navigateToViewController(detailVC)
+    }
+    
     func didChangeSelectedCategory(toIndexCategory index: Int) {
         let category = categoryForIndex(index)
         fetchMovies(forCategory: category)

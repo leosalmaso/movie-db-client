@@ -52,7 +52,6 @@ class MainMovieListViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
-    
     //Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +92,9 @@ extension MainMovieListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
+        if let selectedItem = itemsForSelectedCategory()?[indexPath.row] {
+            presenter.didSelectMovie(selectedItem)
+        }
     }
 }
 
@@ -125,5 +126,10 @@ extension MainMovieListViewController: PresenterToViewProtocol {
     
     func showError(_ error: String) {
         showErrorMessage(error)
+    }
+    
+    //This should be in the router but to simplify the exercise I have decided put it here.
+    func navigateToViewController(_ viewController: UIViewController) {
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -7,18 +7,20 @@
 //
 
 import Foundation
+import UIKit
 
 protocol PresenterToRouterProtocol: class {
     static func createMoviesModule() -> MainMovieListViewController
     static func createSeriesModule() -> MainMovieListViewController
 }
 
-protocol ViewToPresenterProtocol: class{
+protocol ViewToPresenterProtocol: class {
     func initView()
     func fetchMovies(forCategory category: MovieCategory)
     func didChangeSelectedCategory(toIndexCategory index: Int)
     func defineMovieSource(_ movieSource: MovieSource)
-    func categoryForIndex(_ index: Int) -> MovieCategory 
+    func categoryForIndex(_ index: Int) -> MovieCategory
+    func didSelectMovie(_ movie: Movie)
 }
 
 protocol PresenterToViewProtocol: class{
@@ -27,6 +29,7 @@ protocol PresenterToViewProtocol: class{
     func isLoading(_ isLoading: Bool)
     func showError(_ error: String)
     func showMessage(_ message: String)
+    func navigateToViewController(_ viewController: UIViewController)
 }
 
 protocol PresenterToInteractorProtocol: class {

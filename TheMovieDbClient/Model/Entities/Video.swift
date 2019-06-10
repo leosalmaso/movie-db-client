@@ -13,6 +13,7 @@ enum VideoType: String, Codable {
     case Featurette
     case Trailer
     case Clip
+    case OpeningCredits = "Opening Credits"
 }
 
 

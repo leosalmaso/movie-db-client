@@ -9,7 +9,7 @@
 import Foundation
 
 struct Trailers: Codable {
-    let videos: [Video]
+    let videos: [Video]?
 }
 
 extension Trailers {

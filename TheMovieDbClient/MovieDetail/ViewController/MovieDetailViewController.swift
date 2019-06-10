@@ -10,7 +10,10 @@ import UIKit
 
 class MovieDetailViewController: UIViewController {
 
-    let movie = MockHelper.sharedInstance.sampleMovie()!
+    let movieId: Int?
+    let movieSource: MovieSource?
+    
+    var movie: Movie?
     
     @IBOutlet weak var mediaCollectionView: UICollectionView! {
         didSet {
@@ -26,13 +29,65 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var loadingVideoView: UIView!
+    @IBOutlet weak var loadingView: UIView!
+    
+    //Worst ever
+    private let restClient: IRestClientService = RestClientService()
+    private let persistenceService: IPersistenceService = PersistenceService()
+    
+    //Inits
+    init(movieId: Int, inSource source: String) {
+        self.movieId = movieId
+        self.movieSource = MovieSource(rawValue: source)
+        super.init(nibName: "MovieDetailViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        movieId = nil
+        movieSource = nil
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadMovie(movie)
+        loadMovie()
     }
     
-    func loadMovie(_ movie: Movie) {
+    func loadMovie() {
+        guard let movieId = movieId, let movieSource = movieSource else {
+            closeViewController()
+            return
+        }
+        
+        loadingView.isHidden = false
+        
+        restClient.fetchMovie(movieId: movieId, inSource: movieSource.encodeToParam()) { [weak self] response in
+            guard let self = self else { return }
+            if let response = response {
+                do {
+                    let extraParams: [CodableParamKey : String] = [CodableParamKey.movieSource: movieSource.rawValue]
+                    self.movie = try self.persistenceService.persistEntity(response, extraParameters: extraParams)
+                    self.updateView()
+                } catch {
+                    print(error)
+                    self.closeViewController()
+                }
+            } else {
+                self.closeViewController()
+            }
+        }
+    }
+    
+    func closeViewController() {
+        navigationController?.popViewController(animated: true)
+        showErrorMessage("Hubo un error al cargar la pelicula")
+    }
+    
+    func updateView() {
+        guard let movie = movie else {
+            return
+        }
+        
         titleLabel.text = movie.title
         
         if let releaseDate = movie.releaseDate {
@@ -41,22 +96,28 @@ class MovieDetailViewController: UIViewController {
         
         scoreLabel.text = String(movie.voteAverage)
         overviewLabel.text = movie.overview
+        
+        mediaCollectionView.reloadData()
+        
+        loadingView.isHidden = true
     }
 }
 
 extension MovieDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movie.media?.videos.count ?? 0
+        return movie?.movieTrailers()?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = mediaCollectionView.dequeueReusableCell(withReuseIdentifier: "HeaderCellIdentifier", for: indexPath) as! HeaderCollectionViewCell
-        cell.fillCell(withVideo: movie.media!.videos[indexPath.row])
+        if let video = movie?.movieTrailers()?[indexPath.row] {
+            cell.fillCell(withVideo: video)
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let movie = movie.media?.videos[indexPath.row], let movieUrl = movie.videoUrl() {
+        if let movie = movie?.movieTrailers()?[indexPath.row], let movieUrl = movie.videoUrl() {
             loadingVideoView.isHidden = false
             playVideo(videoURL: movieUrl, completionHandler: { [weak self] in
                 guard let self = self else { return }

@@ -17,4 +17,8 @@ class MoviesRouter: PresenterToRouterProtocol {
         return MainMovieListViewController(movieSource: .tv)
         
     }
+    
+    static func createMovieDetailViewController(movieId: Int, inSource source: String) -> MovieDetailViewController {
+        return MovieDetailViewController(movieId: movieId, inSource: source)
+    }
 }

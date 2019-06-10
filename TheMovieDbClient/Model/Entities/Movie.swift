@@ -12,16 +12,8 @@ import CoreData
 @objc(Movie)
 public class Movie: NSManagedObject, Codable {
     
-    var media: Trailers?
+    var trailers: Trailers?
     
-    func imagePath() -> String? {
-        guard let path = posterPath else {
-            return nil
-        }
-        return "https://image.tmdb.org/t/p/w400" + path
-    }
-    
-    // MARK: - Decodable
     required convenience public init(from decoder: Decoder) throws {
         guard let codingUserInfoKeyManagedObjectContext = CoreDataHelper.managedObjectContext,
             let managedObjectContext = decoder.userInfo[codingUserInfoKeyManagedObjectContext] as? NSManagedObjectContext,
@@ -34,6 +26,23 @@ public class Movie: NSManagedObject, Codable {
 
         //Decode Entity
         try decodeEntity(from: decoder)
+    }
+    
+    func imagePath() -> String? {
+        guard let path = posterPath else {
+            return nil
+        }
+        return "https://image.tmdb.org/t/p/w400" + path
+    }
+    
+    func movieTrailers() -> [Video]? {
+        return trailers?.videos?.compactMap({ video  in
+            if video.type == .Trailer {
+                return video
+            } else {
+                return nil
+            }
+        })
     }
 }
 
@@ -69,6 +78,9 @@ extension Movie {
             category = extraParams[.movieCategory] ?? ""
             source = extraParams[.movieSource] ?? ""
         }
+        
+        //Try to get trailers
+        trailers = try container.decodeIfPresent(Trailers.self, forKey: CodingKeys.media)
     }
 }
 
