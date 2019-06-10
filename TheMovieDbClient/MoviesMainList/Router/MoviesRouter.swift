@@ -9,11 +9,11 @@
 import UIKit
 
 class MoviesRouter: PresenterToRouterProtocol {
-    static func createMoviesModule() -> MainMovieListViewController {
+    static func createMoviesModule() -> UIViewController {
         return MainMovieListViewController(movieSource: .movie)
     }
     
-    static func createSeriesModule() -> MainMovieListViewController {
+    static func createSeriesModule() -> UIViewController {
         return MainMovieListViewController(movieSource: .tv)
         
     }

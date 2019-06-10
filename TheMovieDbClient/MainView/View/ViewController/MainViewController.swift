@@ -20,6 +20,12 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
         presenter.initViewController()
     }
+    
+    
+    func openSearch() {
+        let searchVC = SearchMoviesRouter.createSearchModule()
+        present(searchVC, animated: true, completion: nil)
+    }
 }
 
 extension MainViewController: MainViewProtocol {

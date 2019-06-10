@@ -46,6 +46,9 @@ class MainMovieListViewController: UIViewController {
     init(movieSource: MovieSource) {
         super.init(nibName: "MainMovieListViewController", bundle: nil)
         presenter.defineMovieSource(movieSource)
+        navigationItem.title = "The Movie DB Client"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -56,6 +59,13 @@ class MainMovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.initView()
+    }
+    
+    
+    //Esto deberia ser manejado en el router, por cuestiones de tiempo y simplicidad lo pongo aca   
+    @objc func searchTapped() {
+        let searchVC = SearchMoviesViewController()
+        navigationController?.present(searchVC, animated: true, completion: nil)
     }
     
     // TO-DO: Add option to force refresh

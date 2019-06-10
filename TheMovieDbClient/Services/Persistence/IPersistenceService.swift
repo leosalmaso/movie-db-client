@@ -11,5 +11,6 @@ import UIKit
 protocol IPersistenceService {
     func persistEntity<T:Codable>(_ entity: Data, extraParameters params: [CodableParamKey : Any]?) throws -> T
     func fetchMovies(withCategory category: String, inSource source: String, inPage page: Int) -> [Movie]?
+    func fetchMovies(query: String, inSource source: String) -> [Movie]?
     func fetchMovieById(_ id: Int, inSource source: String) -> Movie?
 }

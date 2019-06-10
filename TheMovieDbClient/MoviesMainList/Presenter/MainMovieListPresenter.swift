@@ -22,6 +22,10 @@ class MainMovieListPresenter {
         return MoviesInteractor(presenter: self)
     }()
     
+    private lazy var router: MoviesRouter = {
+        return MoviesRouter()
+    }()
+    
     init(view: PresenterToViewProtocol) {
         self.view = view
         self.categoryPageNumber = [MovieCategory : Int]()

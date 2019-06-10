@@ -11,4 +11,6 @@ import UIKit
 protocol IRestClientService {
     func fetchMovies(source: String, forCategory category: String, inPage page: Int, completion: @escaping (Data?) -> Void)
     func fetchMovie(movieId: Int, inSource source: String, completion: @escaping (Data?) -> Void)
+    
+    func searchMovies(query: String, source: String, completion: @escaping (Data?) -> Void)
 }

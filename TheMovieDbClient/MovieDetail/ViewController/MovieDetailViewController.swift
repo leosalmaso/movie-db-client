@@ -61,20 +61,27 @@ class MovieDetailViewController: UIViewController {
         
         loadingView.isHidden = false
         
-        restClient.fetchMovie(movieId: movieId, inSource: movieSource.encodeToParam()) { [weak self] response in
-            guard let self = self else { return }
-            if let response = response {
-                do {
-                    let extraParams: [CodableParamKey : String] = [CodableParamKey.movieSource: movieSource.rawValue]
-                    self.movie = try self.persistenceService.persistEntity(response, extraParameters: extraParams)
-                    self.updateView()
-                } catch {
-                    print(error)
+        if ReachabilityHelper.sharedInstance.isInternetConnectionAvailable() {
+            restClient.fetchMovie(movieId: movieId, inSource: movieSource.encodeToParam()) { [weak self] response in
+                guard let self = self else { return }
+                if let response = response {
+                    do {
+                        let extraParams: [CodableParamKey : String] = [CodableParamKey.movieSource: movieSource.rawValue]
+                        self.movie = try self.persistenceService.persistEntity(response, extraParameters: extraParams)
+                        self.updateView(isLiveData: true)
+                    } catch {
+                        print(error)
+                        self.closeViewController()
+                    }
+                } else {
                     self.closeViewController()
                 }
-            } else {
-                self.closeViewController()
             }
+        } else if let movie = persistenceService.fetchMovieById(movieId, inSource: movieSource.rawValue) {
+            self.movie = movie
+            updateView(isLiveData: false)
+        } else {
+            closeViewController()
         }
     }
     
@@ -83,7 +90,7 @@ class MovieDetailViewController: UIViewController {
         showErrorMessage("Hubo un error al cargar la pelicula")
     }
     
-    func updateView() {
+    func updateView(isLiveData: Bool) {
         guard let movie = movie else {
             return
         }
@@ -98,6 +105,7 @@ class MovieDetailViewController: UIViewController {
         overviewLabel.text = movie.overview
         
         mediaCollectionView.reloadData()
+        mediaCollectionView.isHidden = !isLiveData
         
         loadingView.isHidden = true
     }

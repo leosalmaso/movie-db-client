@@ -54,24 +54,11 @@ class MoviesInteractor: PresenterToInteractorProtocol {
         }
     }
     
-    //Movie
-    private func fetchOnlineMovie(_ movieId: Int, forSource source: MovieSource) {
-        
-    }
-    
     func fetchMoviesForCategory(_ category: MovieCategory, forSource source: MovieSource, inPage page: Int) {
         if ReachabilityHelper.sharedInstance.isInternetConnectionAvailable() {
             fetchOnlineMovies(category, forSource: source, inPage: page)
         } else {
             fetchOfflineMovies(category, forSource: source, inPage: page)
-        }
-    }
-    
-    func fetchMovie(_ movieId: Int, forSource source: MovieSource) {
-        if ReachabilityHelper.sharedInstance.isInternetConnectionAvailable() {
-            fetchOnlineMovie(movieId, forSource: source)
-        } else {
-            //fetchOfflineMovies(category, forSource: source, inPage: page)
         }
     }
 }

@@ -41,6 +41,19 @@ class RestClientService: IRestClientService {
         }
     }
     
+    func searchMovies(query: String, source: String, completion: @escaping (Data?) -> Void) {
+        let path = "search/\(source)"
+        fetch(from: path, withParams: ["query" : query]) { response in
+            
+            guard let response = response else {
+                completion(nil)
+                return
+            }
+            
+            completion(response)
+        }
+    }
+    
     private func fetch(from path: String, withParams params: [String : Any]?, completion: @escaping (Data?) -> Void) {
         
         guard let url = URL(string: baseUrl + path) else {

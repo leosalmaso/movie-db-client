@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 protocol PresenterToRouterProtocol: class {
-    static func createMoviesModule() -> MainMovieListViewController
-    static func createSeriesModule() -> MainMovieListViewController
+    static func createMoviesModule() -> UIViewController
+    static func createSeriesModule() -> UIViewController
 }
 
 protocol ViewToPresenterProtocol: class {

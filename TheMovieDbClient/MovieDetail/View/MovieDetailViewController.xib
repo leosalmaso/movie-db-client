@@ -27,6 +27,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_internet" translatesAutoresizingMaskIntoConstraints="NO" id="W5m-cM-h1l">
+                    <rect key="frame" x="0.0" y="44" width="414" height="313.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zrJ-ZN-zOv">
                     <rect key="frame" x="0.0" y="44" width="414" height="313.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -155,11 +159,14 @@
                 <constraint firstItem="zrJ-ZN-zOv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1BP-S8-BPf"/>
                 <constraint firstItem="NhF-GR-zCG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="5ws-Dh-qpm"/>
                 <constraint firstItem="4p8-j8-vO2" firstAttribute="width" secondItem="zrJ-ZN-zOv" secondAttribute="width" id="72i-SH-Zhm"/>
+                <constraint firstItem="W5m-cM-h1l" firstAttribute="width" secondItem="zrJ-ZN-zOv" secondAttribute="width" id="BzW-3N-mIy"/>
+                <constraint firstItem="W5m-cM-h1l" firstAttribute="centerY" secondItem="zrJ-ZN-zOv" secondAttribute="centerY" id="CUr-x3-aiS"/>
                 <constraint firstItem="sWT-Qh-gGa" firstAttribute="leading" secondItem="NhF-GR-zCG" secondAttribute="trailing" id="Dne-IZ-LBm"/>
                 <constraint firstItem="zrJ-ZN-zOv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="E7o-ne-5Ws"/>
                 <constraint firstItem="XQa-Zu-7Jc" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="I3f-jJ-t6Y"/>
                 <constraint firstItem="NhF-GR-zCG" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.75" id="IhB-BE-zoq"/>
                 <constraint firstItem="5O4-0a-lmC" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Iue-fT-K3a"/>
+                <constraint firstItem="W5m-cM-h1l" firstAttribute="height" secondItem="zrJ-ZN-zOv" secondAttribute="height" id="IyP-VP-f0v"/>
                 <constraint firstItem="4p8-j8-vO2" firstAttribute="height" secondItem="zrJ-ZN-zOv" secondAttribute="height" id="LU4-oB-Sb4"/>
                 <constraint firstItem="sWT-Qh-gGa" firstAttribute="top" secondItem="zrJ-ZN-zOv" secondAttribute="bottom" constant="8" id="OPC-Qu-Z1O"/>
                 <constraint firstItem="XQa-Zu-7Jc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QIw-qc-B5T"/>
@@ -175,6 +182,7 @@
                 <constraint firstItem="4p8-j8-vO2" firstAttribute="centerX" secondItem="zrJ-ZN-zOv" secondAttribute="centerX" id="qWh-JF-w4L"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sWT-Qh-gGa" secondAttribute="trailing" constant="8" id="qoX-0X-Tw8"/>
                 <constraint firstItem="5O4-0a-lmC" firstAttribute="top" secondItem="AXU-Xq-1FM" secondAttribute="bottom" constant="8" id="r1c-Xo-6ok"/>
+                <constraint firstItem="W5m-cM-h1l" firstAttribute="centerX" secondItem="zrJ-ZN-zOv" secondAttribute="centerX" id="ruQ-Dn-UR3"/>
                 <constraint firstItem="NhF-GR-zCG" firstAttribute="top" secondItem="zrJ-ZN-zOv" secondAttribute="bottom" constant="8" id="w6P-nq-qkI"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -182,6 +190,7 @@
         </view>
     </objects>
     <resources>
+        <image name="no_internet" width="350" height="271.5"/>
         <image name="star" width="64" height="64"/>
     </resources>
 </document>

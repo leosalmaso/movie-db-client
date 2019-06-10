@@ -4,7 +4,6 @@ PODS:
     - Alamofire (~> 4.8)
   - MXSegmentedControl (1.0.0)
   - PureLayout (3.1.4)
-  - ReachabilitySwift (4.3.1)
   - TTGSnackbar (1.8.0)
   - YoutubeDirectLinkExtractor (0.2.0)
 
@@ -13,7 +12,6 @@ DEPENDENCIES:
   - AlamofireImage (~> 3.5)
   - MXSegmentedControl
   - PureLayout
-  - ReachabilitySwift
   - TTGSnackbar
   - YoutubeDirectLinkExtractor
 
@@ -23,7 +21,6 @@ SPEC REPOS:
     - AlamofireImage
     - MXSegmentedControl
     - PureLayout
-    - ReachabilitySwift
     - TTGSnackbar
     - YoutubeDirectLinkExtractor
 
@@ -32,10 +29,9 @@ SPEC CHECKSUMS:
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   MXSegmentedControl: 41e747fc7576b075a8f5d811223478207cbebb77
   PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
-  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   TTGSnackbar: 7edc064c82a916f9f3c4db1ec64eac44143434da
   YoutubeDirectLinkExtractor: 068b6a09d64551cb7cec966179d7f5f5824cd2db
 
-PODFILE CHECKSUM: 5bfc5ae1192175d098842a9917b8093923b756f8
+PODFILE CHECKSUM: bef2fa54e2a478bba645de9d1cf43ba8ba6a8e23
 
 COCOAPODS: 1.5.3

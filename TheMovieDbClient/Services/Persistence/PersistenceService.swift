@@ -46,6 +46,20 @@ extension PersistenceService {
         }
     }
     
+    func fetchMovies(query: String, inSource source: String) -> [Movie]? {
+        let context = CoreDataHelper.sharedInstance.newContext()
+        let request = NSFetchRequest<Movie>(entityName: "Movie")
+        request.predicate = NSPredicate(format: "name like %@ OR title like %@ AND source = %@", query, query, source)
+        
+        do {
+            let movies = try context.fetch(request)
+            return movies
+        } catch {
+            print("Error Fetching Movies")
+            return nil
+        }
+    }
+    
     func fetchMovieById(_ id: Int, inSource source: String) -> Movie? {
         let context = CoreDataHelper.sharedInstance.newContext()
         let request = NSFetchRequest<Movie>(entityName: "Movie")
