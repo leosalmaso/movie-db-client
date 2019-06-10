@@ -46,6 +46,7 @@ class SearchMoviesViewController: UIViewController {
     
     @IBAction func search(_ sender: Any) {
         if let query = movieSearchBar.text, !query.isEmpty {
+            view.endEditing(true)
             let source = MovieSource.allCases[categorySelector.selectedIndex]
             presenter.searchMovies(query, forSoure: source)
         } else {

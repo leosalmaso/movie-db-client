@@ -30,6 +30,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var loadingVideoView: UIView!
     @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var noInternetImageView: UIImageView!
     
     //Worst ever
     private let restClient: IRestClientService = RestClientService()
@@ -106,6 +107,7 @@ class MovieDetailViewController: UIViewController {
         
         mediaCollectionView.reloadData()
         mediaCollectionView.isHidden = !isLiveData
+        noInternetImageView.isHidden = isLiveData
         
         loadingView.isHidden = true
     }

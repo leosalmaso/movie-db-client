@@ -15,6 +15,7 @@
                 <outlet property="loadingVideoView" destination="4p8-j8-vO2" id="V7Q-YN-lk6"/>
                 <outlet property="loadingView" destination="XQa-Zu-7Jc" id="iIP-pL-xeE"/>
                 <outlet property="mediaCollectionView" destination="zrJ-ZN-zOv" id="CrX-iz-lmv"/>
+                <outlet property="noInternetImageView" destination="W5m-cM-h1l" id="TsT-eA-Bnz"/>
                 <outlet property="overviewLabel" destination="l80-rl-VGI" id="TRl-7j-6Ej"/>
                 <outlet property="releaseDateLabel" destination="kLZ-CL-HhF" id="3An-ao-o4b"/>
                 <outlet property="scoreLabel" destination="zNk-Jp-MvF" id="ybr-oY-YxS"/>

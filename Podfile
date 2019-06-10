@@ -10,7 +10,6 @@ target 'TheMovieDbClient' do
 
   pod 'Alamofire'
   pod 'AlamofireImage', '~> 3.5'
-  pod 'PureLayout'
   pod 'MXSegmentedControl'
   pod 'YoutubeDirectLinkExtractor'
   pod "TTGSnackbar"
