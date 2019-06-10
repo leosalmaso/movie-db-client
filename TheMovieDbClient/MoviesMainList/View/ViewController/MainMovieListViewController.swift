@@ -64,7 +64,10 @@ class MainMovieListViewController: UIViewController {
     //Esto deberia ser manejado en el router, por cuestiones de tiempo y simplicidad lo pongo aca   
     @objc func searchTapped() {
         let searchVC = SearchMoviesViewController()
-        navigationController?.present(searchVC, animated: true, completion: nil)
+        let nvc = UINavigationController()
+        nvc.viewControllers = [searchVC]
+        nvc.navigationBar.barTintColor = .darkGray
+        navigationController?.present(nvc, animated: true, completion: nil)
     }
     
     // TO-DO: Add option to force refresh

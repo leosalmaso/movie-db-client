@@ -30,5 +30,7 @@ class SearchMovieCellTableViewCell: UITableViewCell {
         if let imagePath = movie.imagePath(), let imageUrl = URL(string: imagePath) {
             movieImageView.af_setImage(withURL: imageUrl)
         }
+        
+        selectionStyle = .none
     }
 }

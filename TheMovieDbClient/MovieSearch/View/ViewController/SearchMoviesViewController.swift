@@ -11,11 +11,11 @@ import MXSegmentedControl
 
 class SearchMoviesViewController: UIViewController {
     
-    
-    @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var dismissButton: UIButton!
-    @IBOutlet weak var movieSearchBar: UISearchBar!
-    @IBOutlet weak var serchIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var movieSearchBar: UISearchBar!{
+        didSet {
+            movieSearchBar.delegate = self
+        }
+    }
     @IBOutlet weak var categorySelector: MXSegmentedControl! {
         didSet{
             for source in MovieSource.allCases {
@@ -23,7 +23,6 @@ class SearchMoviesViewController: UIViewController {
             }
         }
     }
-    
     @IBOutlet weak var searchTableView: UITableView! {
         didSet {
             let cell = UINib(nibName: "SearchMovieCellTableViewCell", bundle: nil)
@@ -31,6 +30,9 @@ class SearchMoviesViewController: UIViewController {
             searchTableView.tableFooterView = UIView()
         }
     }
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var serchIndicator: UIActivityIndicatorView!
     
     private lazy var presenter: SearchViewToSearchPresenterProtocol = {
         return SearchMoviesPresenter(view: self)
@@ -40,8 +42,12 @@ class SearchMoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
     
     @IBAction func search(_ sender: Any) {
@@ -53,10 +59,17 @@ class SearchMoviesViewController: UIViewController {
             showErrorMessage("Debe ingresar un text para la busqueda")
         }
     }
+    
     @IBAction func dismiss(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+}
+
+extension SearchMoviesViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        search(searchBar)
+    }
 }
 
 extension SearchMoviesViewController: UITableViewDataSource, UITableViewDelegate {
@@ -76,6 +89,14 @@ extension SearchMoviesViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let movie = items?[indexPath.row] {
+            let detailVC = MovieDetailViewController(movieId: movie.id, inSource: movie.source)
+            navigationController?.pushViewController(detailVC, animated: true)
+            detailVC.navigationController?.navigationBar.isHidden = false
+        }
     }
 }
 
