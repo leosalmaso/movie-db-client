@@ -53,4 +53,4 @@ pod install
 
 
 ## Demo
-![](movie.gif)
+![](movie.GIF)
