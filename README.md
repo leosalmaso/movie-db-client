@@ -8,25 +8,25 @@ La aplicación esta estructurada de una manera clara, agregando grupos para cada
 
 Los grupos principales son:
 
-* Assets: contiene recursos que son utilizados en la app como imágenes, JSON para test, etc.
+* **Assets**: contiene recursos que son utilizados en la app como imágenes, JSON para test, etc.
 
-* Commons: Solamente posee enumeraciones y la clase AppDelegate.
+* **Commons**: Solamente posee enumeraciones y la clase AppDelegate.
 
-* Helpers: Varias clases cuyo objetivo es simplificar el desarrollo, centralizando el código que se usa varias veces en la app.
+* **Helpers**: Varias clases cuyo objetivo es simplificar el desarrollo, centralizando el código que se usa varias veces en la app.
 
-* Model: Archivos base de modelo, me hubiera gustado poder dedicarle mas tiempo para tener archivos planos de solo atributos para enviar a la vista.
+* **Model**: Archivos base de modelo, me hubiera gustado poder dedicarle mas tiempo para tener archivos planos de solo atributos para enviar a la vista.
 
-* Services: Estan contenidos los servicios de Networking y Base de Datos
+* **Services**: Estan contenidos los servicios de Networking y Base de Datos
 
 Finalmente existe otros grupos que contienen las clases relacionada a cada feature en la app. Estos son:
 
-* Main View: tab bar que contiene un tab para peliculas y uno para series. Desarrollado con MVP
+* **Main View**: tab bar que contiene un tab para peliculas y uno para series. Desarrollado con MVP
 
-* MoviesMainList: es la lista principal de peliculas las cuales pueden ser filtradas por categorias Top Rated, Popular, Upcoming, On the Air. Las categorias depende de si se visualiza movie o tv. Para el desarrollo de esta pantalla se utilizo VIPER, con algunas limitaciones por convivir con otros protocolos los cuales utilice para agilizar el desarrollo.
+* **MoviesMainList**: es la lista principal de peliculas las cuales pueden ser filtradas por categorias Top Rated, Popular, Upcoming, On the Air. Las categorias depende de si se visualiza movie o tv. Para el desarrollo de esta pantalla se utilizo VIPER, con algunas limitaciones por convivir con otros protocolos los cuales utilice para agilizar el desarrollo.
 
-* MovieDetail: Muestra el detalle de una pelicula/serie permitiendo ver los trailers si ellos se encuentran disponibles.
+* **MovieDetail**: Muestra el detalle de una pelicula/serie permitiendo ver los trailers si ellos se encuentran disponibles.
 
-* Movie Search: Un buscador el cual permite buscar peliculas o series por una cadena determinada. El mismo busca entre peliculas almacenadas en cache si la app no tiene internet.
+* **Movie Search**: Un buscador el cual permite buscar peliculas o series por una cadena determinada. El mismo busca entre peliculas almacenadas en cache si la app no tiene internet.
 
 
 
@@ -42,3 +42,15 @@ La app utiliza Cocoapods, por los que es necesario instarlo antes de correrla. L
 ```bash
 pod install
 ```
+
+## Third Party libraries
+
+* [Alamofire](https://github.com/Alamofire/Alamofire)
+* [AlamofireImage](https://github.com/Alamofire/AlamofireImage)
+* [MXSegmentedControl](https://github.com/maxep/MXSegmentedControl)
+* [YoutubeDirectLinkExtractor](https://github.com/devandsev/YoutubeDirectLinkExtractor)
+* [TTGSnackbar](https://github.com/zekunyan/TTGSnackbar)
+
+
+## Demo
+![](movie.GIF)
