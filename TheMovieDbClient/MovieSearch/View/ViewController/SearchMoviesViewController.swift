@@ -103,9 +103,11 @@ extension SearchMoviesViewController: UITableViewDataSource, UITableViewDelegate
 extension SearchMoviesViewController: SearchPresenterToSearchViewProtocol {
     func showMovies(_ movies: [Movie]) {
         items?.removeAll()
-        items = movies
-        DispatchQueue.main.async {
-            self.searchTableView.reloadData()
+        if movies.count > 0 {            
+            items = movies
+            searchTableView.reloadData()
+        } else {
+            showMessage("No se encontraron peliculas")
         }
     }
     
